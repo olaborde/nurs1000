@@ -8,6 +8,7 @@ import { QUESTIONS_LAB, SECTIONS_LAB, COLORS_LAB } from "./questions_lab.js";
 import { QUESTIONS_MOBILITY, SECTIONS_MOBILITY, COLORS_MOBILITY } from "./questions_exam4_mobility.js";
 import { QUESTIONS_INFECTION, SECTIONS_INFECTION, COLORS_INFECTION } from "./questions_exam4_infection.js";
 import { QUESTIONS_PHARM, SECTIONS_PHARM, COLORS_PHARM } from "./questions_exam4_pharm.js";
+import { CrutchGaitAnimator } from "./CrutchGaitAnimator.jsx";
 
 const TABS = [
   { key: "exam3", label: "Exam 3 Study Guide", short: "Exam 3", questions: QUESTIONS_EXAM3, sections: SECTIONS_EXAM3, colors: COLORS_EXAM3, accent: "#8b5cf6" },
@@ -261,6 +262,17 @@ function QuizEngine({ tab, onBack }) {
                 </div>
               );
             })}
+          </div>
+        )}
+
+        {/* Interactive Visual Learning Tool — Crutch Gait Animator (Mobility tab only) */}
+        {(tab.key === "exam4_mob") && (
+          <div style={{ background: P.white, borderRadius: P.radius, padding: 20, boxShadow: P.shadow, marginTop: 16 }}>
+            <h3 style={{ margin: "0 0 14px", fontSize: 15, fontWeight: 700, color: P.text, display: "flex", alignItems: "center", gap: 8 }}>
+              <span>🦶</span> Interactive Crutch Gait Visualizer
+            </h3>
+            <p style={{ fontSize: 13, color: P.textLight, margin: "0 0 12px" }}>Watch each gait pattern animate step-by-step. Use the controls to pause, rewind, or step through manually.</p>
+            <CrutchGaitAnimator />
           </div>
         )}
       </div>
