@@ -5,6 +5,9 @@ import { QUESTIONS_CH29, SECTIONS_CH29, COLORS_CH29 } from "./questions_ch29.js"
 import { QUESTIONS_CH30, SECTIONS_CH30, COLORS_CH30 } from "./questions_ch30.js";
 import { QUESTIONS_CH31, SECTIONS_CH31, COLORS_CH31 } from "./questions_ch31.js";
 import { QUESTIONS_LAB, SECTIONS_LAB, COLORS_LAB } from "./questions_lab.js";
+import { QUESTIONS_MOBILITY, SECTIONS_MOBILITY, COLORS_MOBILITY } from "./questions_exam4_mobility.js";
+import { QUESTIONS_INFECTION, SECTIONS_INFECTION, COLORS_INFECTION } from "./questions_exam4_infection.js";
+import { QUESTIONS_PHARM, SECTIONS_PHARM, COLORS_PHARM } from "./questions_exam4_pharm.js";
 
 const TABS = [
   { key: "exam3", label: "Exam 3 Study Guide", short: "Exam 3", questions: QUESTIONS_EXAM3, sections: SECTIONS_EXAM3, colors: COLORS_EXAM3, accent: "#8b5cf6" },
@@ -13,6 +16,9 @@ const TABS = [
   { key: "ch30", label: "Ch 30: Integumentary & PV", short: "Ch 30", questions: QUESTIONS_CH30, sections: SECTIONS_CH30, colors: COLORS_CH30, accent: "#ff9800" },
   { key: "ch31", label: "Ch 31: MSK & Neuro", short: "Ch 31", questions: QUESTIONS_CH31, sections: SECTIONS_CH31, colors: COLORS_CH31, accent: "#2ecc71" },
   { key: "lab", label: "MSK Worksheet Lab", short: "🧪 Lab", questions: QUESTIONS_LAB, sections: SECTIONS_LAB, colors: COLORS_LAB, accent: "#f59e0b" },
+  { key: "exam4_mob", label: "Exam 4: Mobility & Assistive Devices", short: "🦵 Mobility", questions: QUESTIONS_MOBILITY, sections: SECTIONS_MOBILITY, colors: COLORS_MOBILITY, accent: "#8b5cf6" },
+  { key: "exam4_inf", label: "Exam 4: Infection Control & SBAR", short: "🦠 Infection", questions: QUESTIONS_INFECTION, sections: SECTIONS_INFECTION, colors: COLORS_INFECTION, accent: "#ef4444" },
+  { key: "exam4_ph", label: "Exam 4: Pharmacology & Documentation", short: "💊 Pharm", questions: QUESTIONS_PHARM, sections: SECTIONS_PHARM, colors: COLORS_PHARM, accent: "#f59e0b" },
 ];
 
 function useStorage(key, def) {
