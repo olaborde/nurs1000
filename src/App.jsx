@@ -9,6 +9,8 @@ import { QUESTIONS_MOBILITY, SECTIONS_MOBILITY, COLORS_MOBILITY } from "./questi
 import { QUESTIONS_INFECTION, SECTIONS_INFECTION, COLORS_INFECTION } from "./questions_exam4_infection.js";
 import { QUESTIONS_PHARM, SECTIONS_PHARM, COLORS_PHARM } from "./questions_exam4_pharm.js";
 import { CrutchGaitAnimator } from "./CrutchGaitAnimator.jsx";
+import { HandHygieneAnimator } from "./HandHygieneAnimator.jsx";
+import { MedicationAnimator } from "./MedicationAnimator.jsx";
 
 const TABS = [
   { key: "exam3", label: "Exam 3 Study Guide", short: "Exam 3", questions: QUESTIONS_EXAM3, sections: SECTIONS_EXAM3, colors: COLORS_EXAM3, accent: "#8b5cf6" },
@@ -273,6 +275,28 @@ function QuizEngine({ tab, onBack }) {
             </h3>
             <p style={{ fontSize: 13, color: P.textLight, margin: "0 0 12px" }}>Watch each gait pattern animate step-by-step. Use the controls to pause, rewind, or step through manually.</p>
             <CrutchGaitAnimator />
+          </div>
+        )}
+
+        {/* Interactive Hand Hygiene Visualizer (Infection Control tab) */}
+        {(tab.key === "exam4_inf") && (
+          <div style={{ background: P.white, borderRadius: P.radius, padding: 20, boxShadow: P.shadow, marginTop: 16 }}>
+            <h3 style={{ margin: "0 0 14px", fontSize: 15, fontWeight: 700, color: P.text, display: "flex", alignItems: "center", gap: 8 }}>
+              <span>🧴</span> WHO 5 Moments of Hand Hygiene
+            </h3>
+            <p style={{ fontSize: 13, color: P.textLight, margin: "0 0 12px" }}>Interactive visualization of the 5 critical moments for hand hygiene around patient care.</p>
+            <HandHygieneAnimator />
+          </div>
+        )}
+
+        {/* Interactive Medication Study Tool (Pharmacology tab) */}
+        {(tab.key === "exam4_ph") && (
+          <div style={{ background: P.white, borderRadius: P.radius, padding: 20, boxShadow: P.shadow, marginTop: 16 }}>
+            <h3 style={{ margin: "0 0 14px", fontSize: 15, fontWeight: 700, color: P.text, display: "flex", alignItems: "center", gap: 8 }}>
+              <span>💊</span> 10 Key Medications Flashcards
+            </h3>
+            <p style={{ fontSize: 13, color: P.textLight, margin: "0 0 12px" }}>Flip through drug cards, learn suffixes, and test yourself with the built-in quiz mode.</p>
+            <MedicationAnimator />
           </div>
         )}
       </div>
