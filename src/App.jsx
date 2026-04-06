@@ -11,6 +11,7 @@ import { QUESTIONS_PHARM, SECTIONS_PHARM, COLORS_PHARM } from "./questions_exam4
 import { CrutchGaitAnimator } from "./CrutchGaitAnimator.jsx";
 import { HandHygieneAnimator } from "./HandHygieneAnimator.jsx";
 import { MedicationAnimator } from "./MedicationAnimator.jsx";
+import { PharmLessons } from "./PharmLessons.jsx";
 
 const TABS = [
   { key: "exam3", label: "Exam 3 Study Guide", short: "Exam 3", questions: QUESTIONS_EXAM3, sections: SECTIONS_EXAM3, colors: COLORS_EXAM3, accent: "#8b5cf6" },
@@ -763,6 +764,7 @@ function QuizEngine({ tab, onBack }) {
    ══════════════════════════════════════════════════════════ */
 export default function App() {
   const [activeTab, setActiveTab] = useState(null);
+  const [showPharmLessons, setShowPharmLessons] = useState(false);
   const [showSets, setShowSets] = useState(false);
   const setsRef = useRef(null);
   const totalQs = TABS.reduce((sum, t) => sum + t.questions.length, 0);
@@ -782,6 +784,18 @@ export default function App() {
       return { best, attempts: hist.length, lastPct: hist.length ? Math.round(hist[hist.length - 1].score / hist[hist.length - 1].total * 100) : null };
     } catch { return { best: 0, attempts: 0, lastPct: null }; }
   };
+
+  /* ── Pharm Lessons active ── */
+  if (showPharmLessons) {
+    return (
+      <div style={{ minHeight: "100vh", background: P.bg, fontFamily: P.font }}>
+        <div style={{ maxWidth: 900, margin: "0 auto", padding: "20px 16px" }}>
+          <button onClick={() => setShowPharmLessons(false)} style={{ background: "none", border: "none", color: P.accent, cursor: "pointer", fontSize: 14, fontWeight: 600, marginBottom: 16, display: "flex", alignItems: "center", gap: 6 }}>← Back to Study Sets</button>
+          <PharmLessons />
+        </div>
+      </div>
+    );
+  }
 
   /* ── Quiz is active ── */
   if (activeTab !== null) {
@@ -944,6 +958,28 @@ export default function App() {
             );
           })}
         </div>
+
+          {/* Pharm Drug Lessons Card */}
+          <div onClick={() => setShowPharmLessons(true)} style={{
+            background: P.white, borderRadius: P.radius, padding: "20px 22px",
+            boxShadow: P.shadow, cursor: "pointer", transition: "all 0.2s ease",
+            border: `1px solid ${P.border}`, position: "relative", overflow: "hidden",
+          }}
+            onMouseEnter={e => { e.currentTarget.style.boxShadow = P.shadowLg; e.currentTarget.style.transform = "translateY(-2px)"; }}
+            onMouseLeave={e => { e.currentTarget.style.boxShadow = P.shadow; e.currentTarget.style.transform = "translateY(0)"; }}
+          >
+            <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 4, background: "linear-gradient(90deg, #e11d48, #f59e0b, #8b5cf6, #3b82f6, #ef4444)" }} />
+            <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+              <div style={{ width: 48, height: 48, borderRadius: 10, background: "#fef3c7", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24, flexShrink: 0 }}>
+                💊
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: 16, fontWeight: 700, color: P.text, marginBottom: 4 }}>Pharmacology Drug Lessons</div>
+                <div style={{ fontSize: 13, color: P.textMuted }}>8 drug classes · Interactive lessons with images · 40 quiz questions</div>
+              </div>
+              <span style={{ color: P.accent, fontWeight: 600, fontSize: 14 }}>Open →</span>
+            </div>
+          </div>
 
         {/* Total footer */}
         <div style={{ textAlign: "center", marginTop: 32, padding: "16px 0", color: P.textLight, fontSize: 13, borderTop: `1px solid ${P.border}` }}>
